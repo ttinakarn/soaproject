@@ -1,47 +1,52 @@
 <template>
+  <div>
     <div>
-        <b-row>
-        <b-col style="text-align: left;">
-          <h3>{{ title }}</h3>
-        </b-col>
-        <b-col style="text-align: right;">
-          <b-button v-if="showButton"><router-link :to="link" class="text-white">See More</router-link></b-button>
-        </b-col>
-      </b-row>
-      <div>
-        <b-card-group deck>
-          <b-card
-            :title="appname"
-            :sub-title="appcategory"
+        <b-card
             img-src="https://cdn2.iconfinder.com/data/icons/micon-social-pack/512/android-512.png"
             img-alt="Image"
             img-top
             tag="article"
-            style="max-width: 220px; padding: 10px;"
-            class="mb-2"
+            style="width: 198px; font-size: 14px;"
+            class="mb-2 text-dark"
           >
+          <p><b style="font-size: 20px;" class="block-ellipsis">{{appname}}</b></p>
+          <p style="font-size: 16px;">{{appcategory}}</p>
             <b-row>
               <b-col>
                 <star-rating
                   :rating="apprating"
                   :read-only="true"
-                  :increment="0.01"
-                  star-size="15"
+                  star-size=15
                   :show-rating="false"
                 ></star-rating>
               </b-col>
               <b-col>
-                <b class="text-success">{{price}}</b>
+                <b class="text-success" style="font-size: 16px;">{{price}}</b>
               </b-col>
             </b-row>
-          </b-card>
-        </b-card-group>
-      </div>
+        </b-card>
     </div>
+  </div>
 </template>
+
+<style>
+.block-ellipsis {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
 
 <script>
 export default {
-  props:['title', 'link', 'appname', 'appcategory', 'apprating', 'price', 'showButton']
-}
+  props: ["appname", "appcategory", "apprating", "price"]
+};
 </script>

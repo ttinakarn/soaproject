@@ -7,14 +7,14 @@
         </router-link>
         <b-navbar-nav>
           <b-nav-item-dropdown text="Category" right>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-            <b-dropdown-item href="#">ES</b-dropdown-item>
-            <b-dropdown-item href="#">RU</b-dropdown-item>
-            <b-dropdown-item href="#">FA</b-dropdown-item>
+            <div id="Box" :items="category" v-for="(item) in category" v-bind:key="item">
+              <b-dropdown-item>
+                <router-link :to="{ name: 'category', params: {catName: item.category} }">
+                  {{item.category}}
+                </router-link>
+              </b-dropdown-item>
+            </div>
           </b-nav-item-dropdown>
-          <b-nav-item>
-            <router-link to="/topcharts" class="text-white">Top Charts</router-link>
-          </b-nav-item>
           <b-nav-form>
             <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
@@ -26,6 +26,32 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    var instance = this;
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "https://springbootsoa.herokuapp.com/api/Category",
+      false
+    );
+    xhr.setRequestHeader(
+      "Authorization",
+      "Basic " + btoa("myuser" + ":" + "password")
+    );
+    xhr.send();
+    if (xhr.readyState === 4 && xhr.status == 200) {
+      var result = JSON.parse(xhr.responseText);
+      var category = result;
+    }
+    return {
+      category
+    };
+  }
+}
+</script>
 
 <style>
 #app {
