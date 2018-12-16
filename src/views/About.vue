@@ -71,14 +71,10 @@ export default {
       var instance = this;
       var xhr = new XMLHttpRequest();
       var title = this.name.replace(/ /g, "%20");
-      console.log(title);
-      
-      var url = "https://springbootsoa.herokuapp.com/api/awpp/".concat(title);
-      console.log(url);
-            
+      console.log(title);            
       xhr.open(
         "GET",
-        "https://springbootsoa.herokuapp.com/api/awpp/".concat(title),
+        "https://springbootsoa.herokuapp.com/api/app/".concat(title),
         false
       );
       xhr.setRequestHeader(

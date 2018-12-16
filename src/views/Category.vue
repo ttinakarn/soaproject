@@ -52,11 +52,7 @@ export default {
   },
   data() {
     var instance = this;
-    var xhr = new XMLHttpRequest();
-    var url = "https://springbootsoa.herokuapp.com/api/Category/".concat(this.catName);
-      console.log(this.catName);
-      console.log(url);
-      
+    var xhr = new XMLHttpRequest();      
     xhr.open(
       "GET",
       "https://springbootsoa.herokuapp.com/api/Category/".concat(this.catName),
