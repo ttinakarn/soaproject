@@ -15,9 +15,12 @@
               </b-dropdown-item>
             </div>
           </b-nav-item-dropdown>
+          <b-nav-item>
+            <router-link to="/topcharts" class="text-white">Top 15 reviews</router-link>
+          </b-nav-item>
           <b-nav-form>
             <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            <router-link to="/search"><b-button size="sm" class="my-2 my-sm-0">Search</b-button></router-link>
           </b-nav-form>
         </b-navbar-nav>
       </div>

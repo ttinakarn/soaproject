@@ -56,7 +56,7 @@
         <hr class="my-4">
         <h4 style="text-align: left;">Reviews</h4>
         <div id="Box" :items="reviews" v-for="(review) in reviews" v-bind:key="review" v-if="review.translated_Review !== 'nan'">
-          <b-card style="text-align: left;">{{review.translated_Review}}</b-card>
+          <b-card :bg-variant="review.sentiment" text-variant="white" style="text-align: left; margin: 5px;">{{review.translated_Review}}</b-card>
         </div>
       </b-jumbotron>
     </template>
@@ -85,6 +85,17 @@ export default {
       if (xhr.readyState === 4 && xhr.status == 200) {
         var result = JSON.parse(xhr.responseText);
         var reviews = result;
+        for (var i = 0; i < reviews.length; i++) {
+        if (reviews[i].sentiment === 'Positive') {
+          reviews[i].sentiment = "success";
+        }
+        else if (reviews[i].sentiment === 'Neutral'){
+          reviews[i].sentiment = "secondary";
+        }
+        else if (reviews[i].sentiment === 'Negative'){
+          reviews[i].sentiment = "danger";
+        }
+      }
       }
       return {
           reviews

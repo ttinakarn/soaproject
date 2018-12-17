@@ -5,10 +5,9 @@
         <h3>{{ title }}</h3>
       </b-col>
       <b-col style="text-align: right;">
-        <b-button  v-if="showButton">
-            See More
-          <router-link :to="link" class="text-white"></router-link>
-        </b-button>
+        <router-link :to="link" class="text-white">
+          <b-button v-if="showButton">See More</b-button>
+        </router-link>
       </b-col>
     </b-row>
   </div>
@@ -16,10 +15,6 @@
 
 <script>
 export default {
-  props: [
-    "title",
-    "link",
-    "showButton"
-  ]
+  props: ["title", "link", "showButton"]
 };
 </script>

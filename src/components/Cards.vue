@@ -21,7 +21,7 @@
                 ></star-rating>
               </b-col>
               <b-col>
-                <b class="text-success" style="font-size: 16px;">{{price}}</b>
+                <b class="text-success" style="font-size: 15px;">{{price}}</b>
               </b-col>
             </b-row>
         </b-card>
